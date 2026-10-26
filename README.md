@@ -9,7 +9,7 @@
   <a href="mailto:hello@yveskwameh.com">hello@yveskwameh.com</a>
 </p>
 
-<p align="center">Design engineer. I design interfaces in Figma and build them in Webflow, Framer, Astro, React and React Native.<br>Open to full-time design engineer roles.</p>
+<p align="center">Design engineer. I design interfaces in Figma and build them in Webflow, Framer, Astro, NextJs, React and React Native.<br>Open to full-time design engineer roles.</p>
 
 <br><br>
 
