@@ -1,3 +1,5 @@
+   [![GitHub Streak](https://streak-stats.demolab.com/?user=yveskwameh&theme=dark)](https://github.com/yveskwameh)
+
 <!-- Profile README for github.com/yveskwameh. Images are built by src/build.py, in a dark and a light version each. -->
 
 <a href="https://yveskwameh.com"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/hero-dark.svg"><source media="(prefers-color-scheme: light)" srcset="assets/hero-light.svg"><img alt="Yves Kwameh, design engineer. I design interfaces and build them, so the thing that ships is the thing that was designed." src="assets/hero-light.svg" width="100%"></picture></a>
