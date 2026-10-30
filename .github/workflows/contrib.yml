@@ -22,15 +22,47 @@ jobs:
           outputs: |
             contrib/snake.svg
             contrib/snake-dark.svg?palette=github-dark
-      - uses: yoshi389111/github-profile-3d-contrib@latest
+      - name: Add contribution numbers to the snake
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          USERNAME: ${{ github.repository_owner }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OWNER: ${{ github.repository_owner }}
+        run: |
+          python3 - <<'PY'
+          import json, os, re, subprocess, datetime
+          q = "query($u:String!){user(login:$u){contributionsCollection{contributionCalendar{totalContributions weeks{contributionDays{date contributionCount}}}}}}"
+          out = subprocess.run(["gh", "api", "graphql", "-f", "query=" + q, "-F", "u=" + os.environ["OWNER"]], capture_output=True, text=True, check=True).stdout
+          cal = json.loads(out)["data"]["user"]["contributionsCollection"]["contributionCalendar"]
+          today = datetime.date.today().isoformat()
+          counts = [d["contributionCount"] for w in cal["weeks"] for d in w["contributionDays"] if d["date"] <= today]
+          longest = run = 0
+          for c in counts:
+              run = run + 1 if c > 0 else 0
+              longest = max(longest, run)
+          i = len(counts) - 1
+          if i >= 0 and counts[i] == 0:
+              i -= 1
+          cur = 0
+          while i >= 0 and counts[i] > 0:
+              cur += 1
+              i -= 1
+          stats = [(str(cal["totalContributions"]), "contributions in the last year"), (str(cur), "day current streak"), (str(longest), "day longest streak this year")]
+          for src, dst, fg, muted in [("contrib/snake.svg", "contrib/snake-stats.svg", "#24292f", "#57606a"), ("contrib/snake-dark.svg", "contrib/snake-stats-dark.svg", "#e6edf3", "#8b949e")]:
+              s = re.sub(r"<\?xml.*?\?>", "", open(src).read()).strip()
+              m = re.search(r'viewBox="([\d. \-]+)"', s)
+              w, h = [float(x) for x in m.group(1).split()[2:4]]
+              s = s.replace("<svg ", '<svg x="0" y="84" ', 1)
+              cols = ""
+              for k, (num, label) in enumerate(stats):
+                  x = w * (k * 2 + 1) / 6
+                  cols += f'<text x="{x}" y="38" text-anchor="middle" font-size="34" font-weight="700" fill="{fg}">{num}</text><text x="{x}" y="62" text-anchor="middle" font-size="14" fill="{muted}">{label}</text>'
+              svg = f'<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="{h + 90}" viewBox="0 0 {w} {h + 90}" font-family="-apple-system,Segoe UI,Helvetica,Arial,sans-serif">{cols}{s}</svg>'
+              open(dst, "w").write(svg)
+          PY
       - name: Commit and push
         run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
-          git add -A contrib profile-3d-contrib
+          git add -A contrib
           if git commit -m "Update contribution graphics"; then
             git push
           fi
