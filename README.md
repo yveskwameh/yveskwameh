@@ -1,5 +1,3 @@
-   [![GitHub Streak](https://streak-stats.demolab.com/?user=yveskwameh&theme=dark)](https://github.com/yveskwameh)
-
 <picture><source media="(prefers-color-scheme: dark)" srcset="contrib/snake-stats-dark.svg"><source media="(prefers-color-scheme: light)" srcset="contrib/snake-stats.svg"><img alt="My GitHub contributions: total in the last year, current streak and longest streak, with a snake eating the contribution graph" src="contrib/snake-stats.svg" width="100%"></picture>
 
 <!-- Profile README for github.com/yveskwameh. Images are built by src/build.py, in a dark and a light version each. -->
