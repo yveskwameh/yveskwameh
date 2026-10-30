@@ -1,5 +1,9 @@
    [![GitHub Streak](https://streak-stats.demolab.com/?user=yveskwameh&theme=dark)](https://github.com/yveskwameh)
 
+<picture><source media="(prefers-color-scheme: dark)" srcset="contrib/snake-dark.svg"><source media="(prefers-color-scheme: light)" srcset="contrib/snake.svg"><img alt="My GitHub contribution graph as a snake game" src="contrib/snake.svg" width="100%"></picture>
+
+<picture><source media="(prefers-color-scheme: dark)" srcset="profile-3d-contrib/profile-night-green.svg"><source media="(prefers-color-scheme: light)" srcset="profile-3d-contrib/profile-green.svg"><img alt="My GitHub contributions as a 3D calendar" src="profile-3d-contrib/profile-green.svg" width="100%"></picture>
+
 <!-- Profile README for github.com/yveskwameh. Images are built by src/build.py, in a dark and a light version each. -->
 
 <a href="https://yveskwameh.com"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/hero-dark.svg"><source media="(prefers-color-scheme: light)" srcset="assets/hero-light.svg"><img alt="Yves Kwameh, design engineer. I design interfaces and build them, so the thing that ships is the thing that was designed." src="assets/hero-light.svg" width="100%"></picture></a>
